@@ -1,0 +1,14 @@
+
+<hr/> 
+ {% if feedback | val('comment') | trim() %}
+	<p class="ur-comment"> {{ feedback | val('comment') }} </p>
+ {% endif %}
+<p>
+<span class="rating"> <b> Ratings: </b> </span>
+<span class="rating"> Content:<b> {{ feedback | val('ratingA') }} </b> </span>
+<span class="rating"> Presentation:<b> {{ feedback | val('ratingB') }} </b> </span>
+<span class="rating"> Overall Rating:<b> {{ feedback | val('ratingC') }} </b> </span></p>
+
+
+<p>-- <span class="author"> {{ feedback.provider }} </span><span class="date"> {{ feedback.createdOn | format_IST }} </span></p>
+

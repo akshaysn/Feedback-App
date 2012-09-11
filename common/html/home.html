@@ -1,0 +1,130 @@
+<html>
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1"> 
+ <meta name="apple-mobile-web-app-capable" content="yes" />
+ <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+ <link rel="apple-touch-icon" href="images/fav.png" />
+ <link type="text/css" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" media="all" rel="stylesheet"></link>
+ <link type="text/css" href="../stylesheets/style.css" media="all" rel="stylesheet"></link>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+ <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+ <title>{{ header }}</title>
+ <script>
+  var feedbackApp = {
+    allTalks : "",
+    selectedCategory : "",
+    initialize: function(){
+       $("#talk_category").change(function(){
+          feedbackApp.selectedCategory = $(this).val()
+          $.ajax({
+            type:"GET",
+            url:"/{{action}}/ajax/"+$(this).val(),
+            success:function(result){
+              feedbackApp.allTalks = jQuery.parseJSON(result);
+              var options = "";
+              $.each(feedbackApp.allTalks, function(key, value){
+                options += "<option value="+value['code'] +"> "+value['title']+" </option>";
+              })
+
+              $("#talk_code").html(options);
+              $('#talk_code').change();
+            }
+          });
+        });
+       $("#talk_code").change(function(){
+          var code = $(this).val();
+          var selectedTalk = $.grep(feedbackApp.allTalks, function(t){
+            return t.code == code;
+          });
+          console.debug("Selected Talk: " + selectedTalk);
+          $('#title').html(selectedTalk[0]['title']);
+          $('#presenter').html(selectedTalk[0]['presenters']);
+          $('#track').html(selectedTalk[0]['track']);
+       });
+       feedbackApp.clearAll();
+    },
+    clearAll: function(){
+      $("#comment").val("");
+       $('#ratingA').val('3');
+       $('#ratingA').slider('refresh');
+       $('#ratingB').val('3');
+       $('#ratingB').slider('refresh');
+       $('#ratingC').val('3');
+       $('#ratingC').slider('refresh');
+    },
+    submit: function() {
+      $("#feedback").submit();
+    }
+  }
+
+  $(document).delegate('.ui-page', 'pageshow', function () {
+      feedbackApp.initialize();
+      if(feedbackApp.selectedCategory){
+        $("#talk_category option[value='"+feedbackApp.selectedCategory+"']").attr('selected', 'selected');
+        $("#talk_category").selectmenu("refresh");
+        console.debug("Selected Category: "+ feedbackApp.selectedCategory);  
+      }
+      $('#talk_category').change();
+  }); 
+  
+</script>
+</head>
+<body>
+  <div data-role="page" id="front">
+  <div data-role="header" data-theme="b">
+    <center><h1>{{ header }}</h1></center>
+  </div>
+   <div class="content-wrapper">
+  <form id="feedback" action="/{{action}}" method="post">
+      <div data-role="fieldcontain">
+        <label for="provider" class="ui-input-text">Your Name:</label>
+        <input type="text" name="provider" placeholder="Anonymous" maxlength="25"></input>
+      </div>
+      <div data-role="fieldcontain">
+        <label for="talk_category">Category:</label>
+        <select id="talk_category" data-native-menu="false">
+          {% for category in categories %}
+             <option value="{{category.code}}"> {{category.displayName}} </option>
+          {% endfor %}
+        </select>
+      </div>
+      <div data-role="fieldcontain">
+        <label for="talk_code" class="ui-input-text">Talk: </label>
+        <select id="talk_code" name="talk_code">
+          <option value="topic1">loading...</option>
+        </select>
+      </div>
+      <div class="offset talk-details">
+        <label class="lbl-heading">Title : </label><span id="title">title</span><br/>
+        <label class="lbl-heading">Presenter(s) : </label><span id="presenter">presenter</span><br/>
+      </div>
+      <div data-role="fieldcontain">
+        <label for="ratingA" class="ui-input-text">Content:
+            <span class="rating-note"> 1-Needs improvement, 5-Excellent </span>
+        </label>
+        <input type="range" name="ratingA" id="ratingA" min="1" max="5" step="1" data-highlight="true" maxlength="1" /> 
+      </div>
+      <div data-role="fieldcontain">
+        <label for="ratingB" class="ui-input-text">Presentation:
+            <span class="rating-note"> 1-Needs improvement, 5-Excellent </span>
+        </label>
+        <input type="range" name="ratingB" id="ratingB" min="1" max="5" step="1" data-highlight="true" maxlength="1" /> 
+      </div>
+      <div data-role="fieldcontain">
+        <label for="ratingC" class="ui-input-text">Overall Rating:
+            <span class="rating-note"> 1-Needs improvement, 5-Excellent </span>
+        </label>
+        <input type="range" name="ratingC" id="ratingC" min="1" max="5" step="1" data-highlight="true" maxlength="1" /> 
+      </div>
+      <div data-role="fieldcontain">
+        <label for="comment" class="ui-input-text">Comment:</label>
+        <textarea id="comment" name="comment" rows="3" cols="60" maxlength="2500" placeholder="Comments please..."></textarea>
+      </div>
+      <div id="submitDiv" class="offset">
+        <input type="button" data-theme="b" value="Submit" onclick="feedbackApp.submit()"/>
+      </div>
+  </form>
+</div>
+</div>
+</body>
+</html>

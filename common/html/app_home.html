@@ -1,0 +1,27 @@
+<html>
+<head>
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
+	 <meta name="apple-mobile-web-app-capable" content="yes" />
+ 	 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	 <link type="text/css" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" media="all" rel="stylesheet"></link>
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	 <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+	 <link type="text/css" href="../stylesheets/style.css" media="all" rel="stylesheet"></link>
+	 <title>Welcome</title>
+</head>
+<body>
+
+ <div data-role="header" data-theme="a">
+    <center><h1>Welcome</h1></center>
+ </div>
+ <div class="content-wrapper" data-role="content" align="center">
+ 	<ul data-role="listview" data-inset="true" data-divider-theme="a" data-theme="b">
+ 		<li data-role="list-divider"> In Progress </li>
+         {% for event in events %}
+            <li><a href="/{{ event.code }}" rel="external">{{ event.title }}</a></li>
+         {% endfor %}
+
+	</ul>
+</div>
+</body>
+</html>

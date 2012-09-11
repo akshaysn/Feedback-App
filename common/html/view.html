@@ -1,0 +1,102 @@
+<html>
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1"> 
+ <meta name="apple-mobile-web-app-capable" content="yes" />
+ <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+ <link rel="apple-touch-icon" href="images/fav.png" />
+ <link type="text/css" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" media="all" rel="stylesheet"></link>
+ <link type="text/css" href="../stylesheets/style.css" media="all" rel="stylesheet"></link>
+ <style>
+ 	@media (min-width: 768px) {
+  		.content-wrapper {
+	    	width: 1200px;
+	    	margin: 0 auto;
+	 	}
+	 	.rating {
+	 		display: inline-block;
+	 		margin-right: 50px;
+	 		text-align: center;
+	 		color:#7486A1;
+	 	}
+	 	.date{
+	 		color: #999;
+	 		font-size: 90%;
+	 	}
+	 	.ur-comment {
+	 		font-size: large;
+			font-style: normal;
+			font-family: Georgia, "Times New Roman", Times, serif;
+			color: #333;
+	 	}
+	 	p.ur-comment:before{
+	 		content:"\201C";
+			font-family: "Times New Roman", Times, serif;
+			font-size:xx-large;
+			text-align:center;
+			color:#CCC;
+	 	}
+		p.ur-comment:after{
+	 		content:"\201D";
+			font-family: "Times New Roman", Times, serif;
+			font-size:xx-large;
+			text-align:center;
+			color:#CCC;
+	 	}
+	 	.author{
+	 		font-style: italic;
+	 		color: #666;
+	 	}
+
+	}
+ </style>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+ <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+ <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+ <script>
+ 
+  google.load('visualization', '1.0', {'packages':['corechart']});
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
+
+  		var data = new Array()
+  		{% for rating, caption in [('ratingA', 'Content'), ('ratingB','Presentation'), ('ratingC','Overall Rating')] %}
+	        data[ {{loop.index0}} ] = new google.visualization.DataTable();
+	        data[ {{loop.index0}} ].addColumn('string', 'Rating');
+	        data[ {{loop.index0}} ].addColumn('number', 'Count');
+	        data[ {{loop.index0}} ].addRows([
+	          ['Rating 1', {{ feedbacks | agg(rating, 1) }}],
+	          ['Rating 2', {{ feedbacks | agg(rating, 2) }}],
+	          ['Rating 3', {{ feedbacks | agg(rating, 3) }}],
+	          ['Rating 4', {{ feedbacks | agg(rating, 4) }}],
+	          ['Rating 5', {{ feedbacks | agg(rating, 5) }}]
+	        ]);
+	        var options = {'title': '{{ caption }}','width':400, 'height':300, 'is3D': true,  'backgroundColor':'f3f3f3'}
+	        new google.visualization.PieChart(document.getElementById('{{rating ~ 'Chart'}}')).draw(data[ {{loop.index0}} ], options);
+        {% endfor %}
+    	
+    }
+ </script>
+ <title>{{ header }}</title>
+</head>
+<body>
+	<div data-role="header" data-theme="b">
+    	<center><h1> {{ talk.title }}</h1></center>
+    	<center> <i> {{ talk.presenters }}</i> </center>
+ 	</div>
+	<div class="content-wrapper">	 	
+		<center><h4> Received Feedback(s): {{ feedbacksCount }} </h4></center>
+		<center><h4> Average Overall Rating: {{ averageRating }} </h4></center>
+
+		<div id="feedbacks">
+			{% for feedback in feedbacks %}
+				{% include 'html/feedback_template.html'%}
+			{% endfor %}
+	  	</div>
+		<hr/> 
+		<span>All's well that ends well.</span> <br/><br/>
+		<div style="float:left" id="ratingAChart"></div>
+		<div style="float:left" id="ratingBChart"></div>
+		<div style="float:left" id="ratingCChart"></div>
+	</div>
+ </body>
+</html>

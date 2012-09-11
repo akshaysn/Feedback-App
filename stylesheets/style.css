@@ -1,0 +1,58 @@
+
+  .content-wrapper {
+    margin: 0 10px;
+  }
+  
+  .lbl-heading {
+    font-weight: bold;
+    color: #000
+  }
+
+ .talk-details {
+      padding-top: 10px;
+    }
+  
+  label {
+    color: #666;
+  }
+  label .rating-note { color: #ccc; font-style: italic; font-size: 90%;}
+  textarea.ui-input-text {
+    height: 100px;
+  }
+  .ur-comment { font-style: italic; color: #666;}
+  @media (min-width: 450px) {
+    label {
+      text-align: left;
+    } 
+    label .rating-note { 
+      display: block;
+    }
+    
+    .ui-field-contain .ui-select, .ui-field-contain input.ui-input-text, .ui-field-contain textarea.ui-input-text, .ui-field-contain .ui-input-search  {
+      width: 77%;
+    } 
+    .ui-field-contain div.ui-slider {
+      width: 65%;
+    }
+    input.ui-slider-input, .ui-field-contain input.ui-slider-input { 
+        width: 50px;
+    }
+
+    .offset {
+      width: 78%;
+      margin: 0 0 0 22%;
+    }
+
+    .talk-details {
+      padding-top: 0;
+    }
+
+  }
+  
+@media (min-width: 768px) {
+  .content-wrapper {
+    width: 750px;
+    margin: 0 auto;
+  }
+
+}

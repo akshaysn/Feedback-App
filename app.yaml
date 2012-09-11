@@ -1,0 +1,22 @@
+application: feed-me-back
+version: 2
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /stylesheets
+  static_dir: stylesheets
+
+- url: /images
+  static_dir: images
+
+- url: /.*
+  script: common.urls.app
+
+libraries:
+- name: jinja2
+  version: latest
+
+builtins:
+- remote_api: on
