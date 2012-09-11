@@ -1,38 +1,30 @@
 [
     {
-        "code":"xconf",
-        "title":"XConf",
-        "header":"XConf Feedback",
-        "isArchived":true,
-        "categories":[ "BLITZ", "RAPID", "CLASSIC", "XCONF" ],
-        "talks":[
-            {
-                "category":"BLITZ",
-                "code":"TLK1",
-                "title":"TimePass",
-                "presenters":"Akshay & Dhaval",
-                "emailaddress":"akshaysn@thoughtworks.com",
-                "beginTime":"10:00 AM",
-                "endTime":"10:00 AM"
-            }
-        ]
-    },
-    {
         "code":"baconf",
         "title":"BAConf",
         "header":"BAConf Feedback",
         "isArchived":true,
-        "categories":[ "BLITZ", "RAPID", "CLASSIC", "XCONF" ],
+        "categories":[ "LIGHTNING", "WORKSHOP", "PRESENTATION" ],
         "talks":[
             {
-                "category":"BLITZ",
+                "category":"PRESENTATION",
                 "code":"TLK2",
                 "title":"TimePass 2",
                 "presenters":"Akshay & Dhaval",
                 "emailaddress":"akshaysn@thoughtworks.com",
                 "beginTime":"10:00 AM",
                 "endTime":"10:00 AM"
+            },
+            {
+                "category":"WORKSHOP",
+                "code":"TLK3",
+                "title":"TimePass 2",
+                "presenters":"Saurabh",
+                "emailaddress":"akshaysn@thoughtworks.com",
+                "beginTime":"11:00 AM",
+                "endTime":"12:00 PM"
             }
+
         ]
     }
 
