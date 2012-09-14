@@ -24,7 +24,7 @@ def _get_talk_from_json(talk,event_code):
 
 def _parse_json_file():
     talks = []
-    json_file = "/Users/akshay/Downloads/feedback/common/events.json"
+    json_file = "common/events.json"
     json_data = json.load(open(json_file))
     for event_json in json_data:
         if "talks" in event_json:

@@ -12,7 +12,7 @@ def _get_event_details_from_json(event_dict):
 
 def _parse_json_file():
     events = []
-    json_file = "/Users/akshay/Downloads/feedback/common/events.json"
+    json_file = "common/events.json"
     json_data = json.load(open(json_file))
     for event_json in json_data:
         event = _get_event_details_from_json(event_json)

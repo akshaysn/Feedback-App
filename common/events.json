@@ -1,5 +1,22 @@
 [
     {
+        "code":"test",
+        "title":"test",
+        "header":"Test Feedback",
+        "isArchived":true,
+        "categories":[ "LIGHTNING" ],
+        "talks":[
+            {
+                "category":"LIGHTNING",
+                "code":"1TLK1",
+                "title":"How to deploy an app on google app engine",
+                "presenters":"Dhaval Doshi",
+                "emailaddress":"dhaval@thoughtworks.com",
+                "beginTime":"10:15 AM",
+                "endTime":"10:55 AM"
+            }]
+    },
+    {
         "code":"baconf",
         "title":"BAConf",
         "header":"BAConf Feedback",
@@ -8,22 +25,140 @@
         "talks":[
             {
                 "category":"PRESENTATION",
+                "code":"TLK1",
+                "title":"Comparing Business Analysis with Software Process Consulting",
+                "presenters":"Sunil M",
+                "emailaddress":"sunilrm@thoughtworks.com",
+                "beginTime":"10:15 AM",
+                "endTime":"10:55 AM"
+            },
+            {
+                "category":"PRESENTATION",
                 "code":"TLK2",
-                "title":"TimePass 2",
-                "presenters":"Akshay & Dhaval",
-                "emailaddress":"akshaysn@thoughtworks.com",
+                "title":"Using MindMaps during Requirement Elicitation",
+                "presenters":"Pushkraj M",
+                "emailaddress":"pushkraj.marathe@sas.com",
                 "beginTime":"10:00 AM",
-                "endTime":"10:00 AM"
+                "endTime":"10:55 PM"
+            },
+            {
+                "category":"PRESENTATION",
+                "code":"TLK3",
+                "title":"Career in Payments - Bridging Challenges",
+                "presenters":"Lokesh P",
+                "emailaddress":"lokeysh@gmail.com",
+                "beginTime":"10:00 AM",
+                "endTime":"10:55 PM"
+            },
+            {
+                "category":"PRESENTATION",
+                "code":"TLK4",
+                "title":"BA Career Path - What is in store for BAs in India",
+                "presenters":"Ashish C",
+                "emailaddress":"aashish.chandorkar@cognizant.com",
+                "beginTime":"11:00 AM",
+                "endTime":"11:40 PM"
+            },
+            {
+                "category":"PRESENTATION",
+                "code":"TLK5",
+                "title":"Core BA Skills(Domain, Communication, Technology)",
+                "presenters":"Tarun C",
+                "emailaddress":"tarunchandel@gmail.com",
+                "beginTime":"11:00 AM",
+                "endTime":"11:40 PM"
+            },
+            {
+                "category":"LIGHTNING",
+                "code":"TLK6",
+                "title":"Was that a good business meeting or a bad one?",
+                "presenters":"Durgesh G",
+                "emailaddress":"durgeshgurnani@gmail.com",
+                "beginTime":"2:00 PM",
+                "endTime":"2:10 PM"
+            },
+            {
+                "category":"LIGHTNING",
+                "code":"TLK7",
+                "title":"A journey from Business Analyst to Business Partner",
+                "presenters":"Manish N",
+                "emailaddress":"manishnachnani@gmail.com",
+                "beginTime":"2:10 PM",
+                "endTime":"2:20 PM"
+            },
+            {
+                "category":"LIGHTNING",
+                "code":"TLK8",
+                "title":"Establishing Business Analysis Practice",
+                "presenters":"Vinay P",
+                "emailaddress":"vinay.pandey@e-zest.in",
+                "beginTime":"2:20 PM",
+                "endTime":"2:30 PM"
+            },
+            {
+                "category":"LIGHTNING",
+                "code":"TLK9",
+                "title":"Indian BA Salary Survey Findings",
+                "presenters":"Remzil K",
+                "emailaddress":"remzil.kulkarni@mastek.com",
+                "beginTime":"2:30 PM",
+                "endTime":"2:40 PM"
+            },
+            {
+                "category":"LIGHTNING",
+                "code":"TLK10",
+                "title":"My Mistakes as a BA",
+                "presenters":"Pankaj K",
+                "emailaddress":"pankajk@thoughtworks.com",
+                "beginTime":"2:40 PM",
+                "endTime":"2:50 PM"
+            },
+            {
+                "category":"LIGHTNING",
+                "code":"TLK11",
+                "title":"Mind the 'Business' while you 'Analyze'",
+                "presenters":"Mangesh N",
+                "emailaddress":"mangesh_nadkarni@infosys.com",
+                "beginTime":"2:50 PM",
+                "endTime":"3:00 PM"
             },
             {
                 "category":"WORKSHOP",
-                "code":"TLK3",
-                "title":"TimePass 2",
-                "presenters":"Saurabh",
-                "emailaddress":"akshaysn@thoughtworks.com",
-                "beginTime":"11:00 AM",
-                "endTime":"12:00 PM"
+                "code":"TLK12",
+                "title":"Faster Feedback - Quick prototyping tips tricks",
+                "presenters":"Pankaj K",
+                "emailaddress":"pankajk@thoughtworks.com",
+                "beginTime":"3:00 PM",
+                "endTime":"4:30 PM"
+            },
+            {
+                "category":"WORKSHOP",
+                "code":"TLK13",
+                "title":"The Beer Game",
+                "presenters":"Unnat G/Chetan A",
+                "emailaddress":"chetana@thoughtworks.com, unnatg@thoughtworks.com",
+                "beginTime":"3:00 PM",
+                "endTime":"4:30 PM"
+            },
+            {
+                "category":"WORKSHOP",
+                "code":"TLK12",
+                "title":"Managerial Mahabharata in the BA World",
+                "presenters":"Sarang K",
+                "emailaddress":"kharesd@yahoo.com",
+                "beginTime":"3:00 PM",
+                "endTime":"4:30 PM"
+            },
+            {
+                "category":"WORKSHOP",
+                "code":"TLK12",
+                "title":"Innovation Games",
+                "presenters":"Tarang B",
+                "emailaddress":"tbaxi@thoughtworks.com",
+                "beginTime":"3:00 PM",
+                "endTime":"4:30 PM"
             }
+
 
         ]
     }
